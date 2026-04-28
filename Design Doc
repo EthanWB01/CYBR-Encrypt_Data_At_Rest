@@ -1,0 +1,29 @@
+Original Plan:
+	The plan is to use either the cryptography library or PyCryptdome depending on which one looks the best. 
+Looking at the instructions there are 3 types of keys that can be used. 
+A randomly generated crypto key, user picked hexadecimal, and a password. 
+The user will have to specify which they plan to use before starting. 
+The user also has to be able to pick which AES version they prefer 128/192/256. 
+Next it must encrypt a file depending on which library I use. 
+It also must encrypt the files within directors. 
+Probably will have to go through the directory and look for any files that have a .txt extension for example. 
+Next, decrypting the file. 
+Should also work on directories so any file that has been encrypted could have an .enc and the decryptor looks for that extension in the files. 
+The program should also loop so the user decides when they are done. 
+
+Libraries/Tools Used:
+	I used the cryptography library in python. 
+I used this instead of PyCryptdome because after reviewing documentation it seemed easier and more straightforward for me. 
+Specifically some of the imports were PBKDF2HMAC, hashes, and AESGCM. 
+PBKDF2HMAC was used for turning the password into a cryptographic key. 
+Hashes.SHA256() was used as the hashing algorithm. 
+AESGCM was used to do the actual encryption and decryption of the files. 
+During development I found nonce which stands for number only used once. 
+This allows a one-time generated number to be used in the encryption. 
+Another tool that was used was using flag bytes that helped it identify how an encrypted file was encrypted. 
+For example if it was encrypted with a password. 
+The AES key length bytes were 16/24/32 these were the lengths of the keys.
+Salting was also used for passwords to prevent 2 passwords from having the same value. 
+Using urandom gives each password a random salted value. 
+Also used much documentation from the cryptography.io page and many youtube videos.
+
